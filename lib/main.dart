@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/introduction.dart';
+import 'package:my_flutter_app/semantics.dart';
+import 'package:my_flutter_app/sliverappbar.dart';
+import 'package:my_flutter_app/switchlist.dart';
 import 'roulette.dart';
 import 'randomizer.dart';
 import 'welcome.dart';
@@ -14,11 +18,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      showSemanticsDebugger: true,
       title: 'Random Selection App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Semantics_widget(),
     );
   }
 }
