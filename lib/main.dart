@@ -7,6 +7,7 @@ import 'package:my_flutter_app/semantics.dart';
 import 'package:my_flutter_app/simpledialog.dart';
 import 'package:my_flutter_app/sliverappbar.dart';
 import 'package:my_flutter_app/switchlist.dart';
+import 'package:my_flutter_app/tabbar.dart';
 import 'roulette.dart';
 import 'randomizer.dart';
 import 'welcome.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SpaceHomeScreen(),
+      home: TabBarWidget(),
     );
   }
 }
