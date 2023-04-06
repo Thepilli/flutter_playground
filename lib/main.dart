@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_flutter_app/EmailInputField.dart';
+import 'package:my_flutter_app/googlenavbar.dart';
+import 'package:my_flutter_app/homepage.dart';
 import 'package:my_flutter_app/introduction.dart';
 import 'package:my_flutter_app/layoutbuilde.dart';
 import 'package:my_flutter_app/pages/PlanetCard_page.dart';
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TabBarWidget(),
+      home: HomePage_Starter(),
     );
   }
 }
