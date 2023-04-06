@@ -11,7 +11,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('cart Page'),
+      child: Text('Cart Page'),
     );
   }
 }
