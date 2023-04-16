@@ -131,7 +131,7 @@ Widget courseLayout(BuildContext context) {
           height: 100,
           child: Image.asset(
             fit: BoxFit.cover,
-            'images/${imageFileList[index]}',
+            'assets/${imageFileList[index]}',
           ),
         ),
       );
