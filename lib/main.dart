@@ -1,37 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/EmailInputField.dart';
-import 'package:my_flutter_app/googlenavbar.dart';
-import 'package:my_flutter_app/homepage.dart';
-import 'package:my_flutter_app/introduction.dart';
-import 'package:my_flutter_app/layoutbuilde.dart';
-import 'package:my_flutter_app/pages/PlanetCard_page.dart';
-import 'package:my_flutter_app/semantics.dart';
-import 'package:my_flutter_app/simpledialog.dart';
-import 'package:my_flutter_app/sliverappbar.dart';
-import 'package:my_flutter_app/switchlist.dart';
-import 'package:my_flutter_app/tabbar.dart';
-import 'roulette.dart';
-import 'randomizer.dart';
-import 'welcome.dart';
-import 'mylotto.dart';
+import 'package:my_flutter_app/pages/planet_demo/planet_demo_card.dart';
+
+import 'package:my_flutter_app/widgets/webview_widget.dart';
+import 'package:my_flutter_app/widgets/textform_widget.dart';
+import 'package:my_flutter_app/widgets/html_reader_widget.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
+    const title = ' Demo';
     return MaterialApp(
-      showSemanticsDebugger: false,
-      title: 'Random Selection App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: HomePage_Starter(),
-    );
+        showSemanticsDebugger: false,
+        title: title,
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+        ),
+        home: planet_demo_home());
   }
 }
 
