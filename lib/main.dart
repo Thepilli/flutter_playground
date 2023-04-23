@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/pages/planet_demo/planet_demo_card.dart';
-
-import 'package:my_flutter_app/widgets/webview_widget.dart';
-import 'package:my_flutter_app/widgets/textform_widget.dart';
-import 'package:my_flutter_app/widgets/html_reader_widget.dart';
+import 'package:my_flutter_app/widgets/list_wheel_scroll_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +22,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        home: planet_demo_home());
+        home: const ListWheelScrollWidget());
   }
 }
 

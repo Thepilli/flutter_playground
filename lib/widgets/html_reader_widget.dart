@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 Future<String> loadAsset() async {
-  return await rootBundle.loadString('images/article_1.txt');
+  return await rootBundle.loadString('assets/article_1.txt');
 }
 
 class HtmlReaderWidget extends StatelessWidget {
