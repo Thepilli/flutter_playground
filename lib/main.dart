@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/widgets/list_wheel_scroll_widget.dart';
+import 'package:my_flutter_app/widgets/value_listenble_builder_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,12 +17,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     const title = ' Demo';
     return MaterialApp(
-        showSemanticsDebugger: false,
-        title: title,
-        theme: ThemeData(
-          primarySwatch: Colors.amber,
-        ),
-        home: const ListWheelScrollWidget());
+      showSemanticsDebugger: false,
+      title: title,
+      theme: ThemeData(
+        primarySwatch: Colors.amber,
+      ),
+      home: const ValueListenableBuilderWidget(),
+      // home: const GaugeArrowAnimation(value: 14),
+    );
   }
 }
 
@@ -34,7 +36,7 @@ class _MyAppState extends State<MyApp> {
 
 // }
 
-// @override
+// @override 
 // void dispose() {
 //   // TODO: implement dispose
 //   super.dispose();
