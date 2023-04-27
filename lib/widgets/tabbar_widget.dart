@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:my_flutter_app/pages/bmi/GPT_gauge/gauge_arrow_component.dart';
+import 'package:my_flutter_app/widgets/google_navbar_widget.dart';
+import 'package:my_flutter_app/widgets/gridview_custom_widget.dart';
+import 'package:my_flutter_app/widgets/sliver_appbar_widget.dart';
 
 class TabBarWidget extends StatelessWidget {
   const TabBarWidget({super.key});
@@ -6,7 +10,7 @@ class TabBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
+        length: 4,
         child: Scaffold(
           appBar: AppBar(
             title: const Text('TabBar Widget'),
@@ -15,14 +19,19 @@ class TabBarWidget extends StatelessWidget {
                 Tab(icon: Icon(Icons.car_crash)),
                 Tab(icon: Icon(Icons.directions_transit)),
                 Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.directions_bike)),
               ],
             ),
           ),
-          body: TabBarView(
+          body: const TabBarView(
             children: <Widget>[
-              Center(child: Text('Car')),
-              Center(child: Text('Transit')),
-              Center(child: Text('Bike')),
+              Center(
+                  child: GaugeArrowAnimation(
+                value: 0,
+              )),
+              Center(child: GridViewCustomWidget()),
+              Center(child: SliverAppbarWidget()),
+              Center(child: GoogleNavbarWidgetStarter()),
             ],
           ),
         ));

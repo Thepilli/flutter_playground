@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/widgets/value_listenble_builder_widget.dart';
+import 'package:my_flutter_app/widgets/vertical_divider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,8 +22,10 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: const ValueListenableBuilderWidget(),
-      // home: const GaugeArrowAnimation(value: 14),
+      home: const VerticvalDividerWidget(),
+      // home: const GaugeArrowAnimation(
+      //   value: 0,
+      // ),
     );
   }
 }

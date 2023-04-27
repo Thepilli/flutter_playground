@@ -19,7 +19,7 @@ class _SliverAppbarWidgetState extends State<SliverAppbarWidget> {
             flexibleSpace: FlexibleSpaceBar(
               title: const Text('SliverAppBar'),
               background: Image.asset(
-                'images/pika.jpg',
+                'assets/pika.jpg',
                 fit: BoxFit.cover,
               ),
             ),

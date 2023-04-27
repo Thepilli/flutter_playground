@@ -12,8 +12,6 @@ class GaugeArrowAnimation extends StatefulWidget {
 
 class _GaugeArrowAnimationState extends State<GaugeArrowAnimation>
     with SingleTickerProviderStateMixin {
-  double _value = 14;
-
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -24,7 +22,7 @@ class _GaugeArrowAnimationState extends State<GaugeArrowAnimation>
         vsync: this, duration: const Duration(milliseconds: 1000));
     _animation = Tween<double>(
             begin: -math.pi / 2,
-            end: (widget.value - 14) * math.pi / 16 - math.pi / 2)
+            end: (widget.value) * math.pi / 16 - math.pi / 2)
         .animate(_controller);
 
     _controller.forward();
@@ -36,40 +34,42 @@ class _GaugeArrowAnimationState extends State<GaugeArrowAnimation>
     super.dispose();
   }
 
-  void _onSliderChanged(double value) {
-    setState(() {
-      _value = value;
-      _animation = Tween<double>(
-              begin: _animation.value,
-              end: (_value - 14) * math.pi / 16 - math.pi / 2)
-          .animate(_controller);
-      _controller.reset();
-      _controller.forward();
-    });
-  }
+  // void _onSliderChanged(double value) {
+  //   setState(() {
+  //     _value = value;
+  //     _animation = Tween<double>(
+  //             begin: _animation.value,
+  //             end: (_value - 14) * math.pi / 16 - math.pi / 2)
+  //         .animate(_controller);
+  //     _controller.reset();
+  //     _controller.forward();
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Stack(
             children: [
-              Center(
-                child: Container(
-                  width: 400,
-                  height: 300,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/gauge_background.png'),
-                      fit: BoxFit.cover,
-                    ),
+              Container(
+                alignment: Alignment.center,
+                width: 400,
+                height: 300,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/bmi_gauge.png'),
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
               ),
-              Center(
+              Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.only(top: 140, left: 10),
                 child: SizedBox(
-                  height: 150,
+                  height: 100,
                   child: AnimatedBuilder(
                     animation: _animation,
                     builder: (context, child) {
@@ -86,12 +86,12 @@ class _GaugeArrowAnimationState extends State<GaugeArrowAnimation>
               ),
             ],
           ),
-          Slider(
-            value: _value,
-            min: 14,
-            max: 30,
-            onChanged: _onSliderChanged,
-          ),
+          // Slider(
+          //   value: _value,
+          //   min: 14,
+          //   max: 40,
+          //   onChanged: _onSliderChanged,
+          // ),
         ],
       ),
     );

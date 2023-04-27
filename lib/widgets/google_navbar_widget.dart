@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/pages/google_navbar/cart_page.dart';
-import 'package:my_flutter_app/pages/google_navbar/shop_page.dart';
+import 'package:my_flutter_app/pages/bmi/GPT_gauge/gauge_arrow_component.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:my_flutter_app/widgets/gridview_custom_widget.dart';
+import 'package:my_flutter_app/widgets/input_chip_widget.dart';
 
 class GoogleNavbarWidgetStarter extends StatefulWidget {
   const GoogleNavbarWidgetStarter({super.key});
@@ -23,15 +24,20 @@ class _GoogleNavbarWidgetStarter extends State<GoogleNavbarWidgetStarter> {
   // pages to navigate to
   final List<Widget> _pages = [
     // shop page
-    const CartPage(),
+    const GridViewCustomWidget(),
+    const InputChipWidget(),
+    const GridViewCustomWidget(),
     // cart page
-    const ShopPage(),
+    const Center(
+        child: GaugeArrowAnimation(
+      value: 0,
+    )),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 201, 161, 161),
+      backgroundColor: const Color.fromARGB(255, 164, 60, 77),
       bottomNavigationBar: GoogleNavbarWidget(
         onTabChange: (index) => navigateBottomBar(index),
       ),
@@ -47,27 +53,32 @@ class GoogleNavbarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 25.0),
-      child: GNav(
-        onTabChange: (value) => onTabChange!(value),
-        tabActiveBorder: Border.all(color: Colors.white, width: 1),
-        gap: 20,
-        mainAxisAlignment: MainAxisAlignment.center,
-        activeColor: Colors.white,
-        color: Color.fromARGB(255, 111, 17, 17),
-        tabs: const [
-          // home tab
-          GButton(
-            icon: Icons.trolley,
-            text: 'Cart',
-          ),
-          GButton(
-            icon: Icons.shop,
-            text: 'Shop',
-          ),
-        ],
-      ),
+    return GNav(
+      onTabChange: (value) => onTabChange!(value),
+      tabActiveBorder: Border.all(color: Colors.white, width: 2),
+      gap: 10,
+      mainAxisAlignment: MainAxisAlignment.center,
+      activeColor: Colors.white,
+      color: const Color.fromARGB(255, 111, 17, 17),
+      tabs: const [
+        // home tab
+        GButton(
+          icon: Icons.trolley,
+          text: 'Cart',
+        ),
+        GButton(
+          icon: Icons.shop,
+          text: 'Shop',
+        ),
+        GButton(
+          icon: Icons.shop,
+          text: 'Shop',
+        ),
+        GButton(
+          icon: Icons.shop,
+          text: 'Shop',
+        ),
+      ],
     );
   }
 }
