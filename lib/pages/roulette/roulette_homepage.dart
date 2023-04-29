@@ -1,11 +1,32 @@
-import 'package:flutter/material.dart';
-import 'package:my_flutter_app/pages/roulette/gesture_component.dart';
-import 'package:roulette/roulette.dart';
-import 'arrow_component.dart';
 import 'dart:math';
 
-class RouletterComponent extends StatelessWidget {
-  const RouletterComponent({
+import 'package:flutter/material.dart';
+
+import 'package:roulette/roulette.dart';
+
+import 'roulette_arrow_component.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Roulette',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const RouletteHomePage(),
+    );
+  }
+}
+
+class MyRoulette extends StatelessWidget {
+  const MyRoulette({
     Key? key,
     required this.controller,
   }) : super(key: key);
@@ -18,10 +39,10 @@ class RouletterComponent extends StatelessWidget {
       alignment: Alignment.topCenter,
       children: [
         SizedBox(
-          width: 300,
-          height: 300,
+          width: 260,
+          height: 260,
           child: Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 30),
             child: Roulette(
               // Provide controller to update its state
               controller: controller,
@@ -34,7 +55,7 @@ class RouletterComponent extends StatelessWidget {
             ),
           ),
         ),
-        const ArrowComponenet(),
+        const ArrowComponent(),
       ],
     );
   }
@@ -52,7 +73,7 @@ class _RouletteHomePageState extends State<RouletteHomePage>
   static final _random = Random();
 
   late RouletteController _controller;
-  bool _clockwise = false;
+  bool _clockwise = true;
 
   final colors = <Color>[
     Colors.red.withAlpha(50),
@@ -61,33 +82,39 @@ class _RouletteHomePageState extends State<RouletteHomePage>
     Colors.yellow.withAlpha(90),
     Colors.amber.withAlpha(50),
     Colors.indigo.withAlpha(70),
+    Colors.red.withAlpha(50),
+    Colors.green.withAlpha(30),
+    Colors.blue.withAlpha(70),
+    Colors.yellow.withAlpha(90),
+    Colors.amber.withAlpha(50),
+    Colors.indigo.withAlpha(70),
   ];
-
   final names = <String>[
     'Red',
-    'Green',
-    'Blue',
-    'Yellow',
-    'Amber',
-    'Indigo',
-  ];
-  final pecivo = <String>[
-    'images/pika.jpg',
-    'images/pika.jpg',
-    'images/pika.jpg',
-    'images/pika.jpg',
-    'images/pika.jpg',
-    'images/pika.jpg',
+    'green',
+    'blue',
+    'yellow',
+    'amber',
+    'indigo',
+    'Red',
+    'green',
+    'blue',
+    'yellow',
+    'amber',
+    'indigo',
   ];
 
   @override
   void initState() {
     // Initialize the controller
-    final group = RouletteGroup.uniform(
-      colors.length,
-      textBuilder: pecivo.elementAt,
-      colorBuilder: colors.elementAt,
-    );
+    final group = RouletteGroup.uniform(colors.length,
+        textBuilder: names.elementAt,
+        colorBuilder: colors.elementAt,
+        textStyleBuilder: (index) => const TextStyle(
+              fontSize: 10,
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ));
     _controller = RouletteController(vsync: this, group: group);
     super.initState();
   }
@@ -126,12 +153,7 @@ class _RouletteHomePageState extends State<RouletteHomePage>
                   ),
                 ],
               ),
-              RouletterComponent(controller: _controller),
-              const SizedBox(
-                width: 500,
-                height: 100,
-              ),
-              const GestureDetectorComponent()
+              MyRoulette(controller: _controller),
             ],
           ),
         ),
@@ -139,7 +161,7 @@ class _RouletteHomePageState extends State<RouletteHomePage>
       floatingActionButton: FloatingActionButton(
         // Use the controller to run the animation with rollTo method
         onPressed: () => _controller.rollTo(
-          0,
+          3,
           clockwise: _clockwise,
           offset: _random.nextDouble(),
         ),

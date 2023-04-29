@@ -238,6 +238,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_spinning_wheel:
+    dependency: "direct main"
+    description:
+      name: flutter_spinning_wheel
+      sha256: b4e833d9e7d605221448a4a2df793d960e210a5ef6f31ec4e777fc55c4b67a70
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   flutter_staggered_grid_view:
     dependency: "direct main"
     description:

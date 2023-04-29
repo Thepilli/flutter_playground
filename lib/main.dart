@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/widgets/vertical_divider.dart';
+import 'package:my_flutter_app/pages/fortune_wheel/demo_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: const VerticvalDividerWidget(),
+      home: const DemoScreen(),
       // home: const GaugeArrowAnimation(
       //   value: 0,
       // ),

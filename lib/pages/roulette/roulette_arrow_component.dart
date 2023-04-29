@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class ArrowComponenet extends StatelessWidget {
-  const ArrowComponenet({Key? key}) : super(key: key);
+class ArrowComponent extends StatelessWidget {
+  const ArrowComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 20,
       height: 36,
-      child: CustomPaint(painter: _ArrowComponenetPainter()),
+      child: CustomPaint(painter: _ArrowComponentPainter()),
     );
   }
 }
 
-class _ArrowComponenetPainter extends CustomPainter {
+class _ArrowComponentPainter extends CustomPainter {
   final _paint = Paint()
     ..color = Colors.amber
     ..style = PaintingStyle.fill;
