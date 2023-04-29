@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/pages/fortune_wheel/demo_screen.dart';
+import 'package:my_flutter_app/widgets/search_bar_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,14 +15,14 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    const title = ' Demo';
+    const title = 'Flutter Demo';
     return MaterialApp(
       showSemanticsDebugger: false,
       title: title,
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: const DemoScreen(),
+      home: const SearchBarWidget(),
       // home: const GaugeArrowAnimation(
       //   value: 0,
       // ),
