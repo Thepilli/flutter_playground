@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/widgets/search_bar_widget.dart';
+import 'package:my_flutter_app/widgets/audio_player_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,30 +17,15 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     const title = 'Flutter Demo';
     return MaterialApp(
-      showSemanticsDebugger: false,
-      title: title,
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
-      home: const SearchBarWidget(),
-      // home: const GaugeArrowAnimation(
-      //   value: 0,
-      // ),
-    );
+        showSemanticsDebugger: false,
+        title: title,
+        theme: ThemeData(
+          primarySwatch: Colors.amber,
+        ),
+        home: const AudioPlayerWidget()
+        // home: const GaugeArrowAnimation(
+        //   value: 0,
+        // ),
+        );
   }
 }
-
-
-// @override
-// void initState() {
-//   // TODO: imeplement initState
-//   super.initState();
-
-// }
-
-// @override 
-// void dispose() {
-//   // TODO: implement dispose
-//   super.dispose();
-// }
-

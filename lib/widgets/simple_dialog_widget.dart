@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class SimpleDialogWidget extends StatefulWidget {
   const SimpleDialogWidget({super.key});
@@ -8,6 +9,9 @@ class SimpleDialogWidget extends StatefulWidget {
 }
 
 class _SimpleDialogWidgetState extends State<SimpleDialogWidget> {
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,4 +40,8 @@ class _SimpleDialogWidgetState extends State<SimpleDialogWidget> {
       ),
     );
   }
+}
+
+Future<void> onSelectNotification(String? payload) async {
+  // Handle the notification tap event here
 }
