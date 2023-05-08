@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/widgets/audio_player_widget.dart';
+import 'package:my_flutter_app/widgets/time_picker_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        home: const AudioPlayerWidget()
+        home: const TimePickerWidget()
         // home: const GaugeArrowAnimation(
         //   value: 0,
         // ),

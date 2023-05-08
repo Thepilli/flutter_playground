@@ -35,15 +35,25 @@ def scrape_blog(
 
 # Sample function call
 scrape_blog(
-    url="https://www.idealni.cz/clanek/leci-leky-od-psychiatra/",
-    title_div="h1",
+    url="https://www.idealni.cz/jidelnicek/zakladni-doporuceni/",
+    title_div="header",
     title_class="class",
-    title_classtext="post-title entry-title\\ ",
+    title_classtext="entry-content-header",
     content_div="div",
     content_class="class",
     content_classtext="entry-content",
-    filename="idealni.html",
+    filename="i_zakladni_doporuceni.html",
 )
+# idealni(
+#     url="https://www.idealni.cz/jidelnicek/podvaha-a-jidelnicek/",
+#     title_div="header",
+#     title_class="class",
+#     title_classtext="entry-content-header",
+#     content_div="div",
+#     content_class="class",
+#     content_classtext="entry-content",
+#     filename="idealni.html",
+# )
 
 # nzip(
 #     url="https://www.nzip.cz/clanek/700-poruchy-prijmu-potravy-jak-rozpoznat-priznaky",

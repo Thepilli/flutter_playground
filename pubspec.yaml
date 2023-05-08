@@ -50,6 +50,8 @@ dependencies:
   flutter_spinning_wheel: ^1.1.0
   flutter_local_notifications: ^14.0.0+1
   audioplayers: ^4.0.1
+  flutter_animate: ^4.1.1+1
+  http: ^0.13.6
 
 dev_dependencies:
   flutter_test:
