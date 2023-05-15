@@ -26,7 +26,7 @@ class _BmiCalculatorStateComponent extends State<BmiCalculatorComponent> {
               'Enter your height and weight:',
               style: TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -41,7 +41,7 @@ class _BmiCalculatorStateComponent extends State<BmiCalculatorComponent> {
                     keyboardType: TextInputType.number,
                   ),
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 SizedBox(
                   width: 100,
                   child: TextField(
@@ -55,12 +55,12 @@ class _BmiCalculatorStateComponent extends State<BmiCalculatorComponent> {
                 ),
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _calculateBmi,
               child: const Text('Calculate BMI'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               'Your BMI is ${_bmi.toStringAsFixed(1)}',
               style: const TextStyle(fontSize: 18),

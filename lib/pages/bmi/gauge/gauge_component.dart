@@ -22,10 +22,10 @@ class GaugeComponent extends StatefulWidget {
 class _GaugeComponentState extends State<GaugeComponent> {
   @override
   Widget build(BuildContext context) {
-    final scoreRatio = 1.0;
+    const scoreRatio = 1.0;
 
-    final co2EqTonsPerMonth = 20 / 12;
-    final scoreToDisplay = co2EqTonsPerMonth;
+    const co2EqTonsPerMonth = 20 / 12;
+    const scoreToDisplay = co2EqTonsPerMonth;
 
     return Container(
       decoration: const BoxDecoration(
@@ -51,7 +51,7 @@ class _GaugeComponentState extends State<GaugeComponent> {
           Center(
             child: Stack(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 200,
                   child: AspectRatio(
                     aspectRatio: 16 / 10,
@@ -65,7 +65,7 @@ class _GaugeComponentState extends State<GaugeComponent> {
                     alignment: Alignment.bottomCenter,
                     child: RichText(
                       textAlign: TextAlign.center,
-                      text: TextSpan(
+                      text: const TextSpan(
                         children: [
                           TextSpan(
                             text: '$scoreToDisplay ',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/widgets/time_picker_widget.dart';
+import 'package:my_flutter_app/widgets/carousel_slider_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),
-        home: const TimePickerWidget()
+        home: const CarouselDemo()
         // home: const GaugeArrowAnimation(
         //   value: 0,
         // ),

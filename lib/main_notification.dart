@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
               var platformDetails = NotificationDetails(
                 android: androidDetails,
               );
+              // ignore: deprecated_member_use
               await flutterLocalNotificationsPlugin.schedule(
                   0,
                   'Scheduled Notification Title',

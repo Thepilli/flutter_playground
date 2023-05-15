@@ -14,8 +14,8 @@ Stream<int> generateStream = (() async* {
   await Future<void>.delayed(const Duration(seconds: 1));
   yield 2;
   throw 'Something happened';
-  await Future<void>.delayed(const Duration(seconds: 1));
-  yield 3;
+  // await Future<void>.delayed(const Duration(seconds: 1));
+  // yield 3;
 })();
 
 class _StreamBuilderWidgetState extends State<StreamBuilderWidget> {

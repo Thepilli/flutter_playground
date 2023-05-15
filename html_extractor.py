@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def scrape_blog(
+def idealni(
     url,
     title_div,
     title_class,
@@ -34,55 +34,58 @@ def scrape_blog(
 
 
 # Sample function call
-scrape_blog(
-    url="https://www.idealni.cz/jidelnicek/zakladni-doporuceni/",
+# scrape_blog(
+#     url="https://atypmagazin.cz/profesorka-papezova-poruchy-prijmu-potravy-jsou-zacarovany-kruh/",
+#     title_div="div",
+#     title_class="class",
+#     title_classtext="elementor-element elementor-element-d4f8359 elementor-widget elementor-widget-theme-post-title elementor-page-title elementor-widget-heading",
+#     content_div="div",
+#     content_class="class",
+#     content_classtext="elementor-element elementor-element-414cdffb elementor-widget elementor-widget-theme-post-content",
+#     filename="profesorka_papezova_poruchy_prijmu_potravy_jsou_zacarovany_kruh.html",
+# )
+
+
+idealni(
+    url="https://www.idealni.cz/nasledky-mentalni-anorexie-a-bulimie/",
     title_div="header",
     title_class="class",
     title_classtext="entry-content-header",
     content_div="div",
     content_class="class",
     content_classtext="entry-content",
-    filename="i_zakladni_doporuceni.html",
+    filename="i_nasledky_mentalni_anorexie_a_bulimie.html",
 )
-# idealni(
-#     url="https://www.idealni.cz/jidelnicek/podvaha-a-jidelnicek/",
-#     title_div="header",
-#     title_class="class",
-#     title_classtext="entry-content-header",
-#     content_div="div",
-#     content_class="class",
-#     content_classtext="entry-content",
-#     filename="idealni.html",
-# )
 
 # nzip(
 #     url="https://www.nzip.cz/clanek/700-poruchy-prijmu-potravy-jak-rozpoznat-priznaky",
-#     title_div='div',
-#     title_class='class',
-#     title_classtext='article__title',
-#     content_div='div',
-#     content_class='class',
-#     content_classtext='article__content',
-#     filename='ppp_priznaky.html'
+#     title_div="div",
+#     title_class="class",
+#     title_classtext="article__title",
+#     content_div="div",
+#     content_class="class",
+#     content_classtext="article__content",
+#     filename="ppp_priznaky.html",
 # )
 
 # healthyandfree(
 #     url="http://www.healthyandfree.cz/index.php/koronavirus/item/407-a-ty-se-nechces-vylecit",
-#     title_div='h2',
-#     title_class='class',
-#     title_classtext='itemTitle',
-#     content_div='div',
-#     content_class='class',
-#     content_classtext='itemFullText',
-#     filename='lecba.html'
+#     title_div="h2",
+#     title_class="class",
+#     title_classtext="itemTitle",
+#     content_div="div",
+#     content_class="class",
+#     content_classtext="itemFullText",
+#     filename="lecba.html",
 # )
+
 # hladovydenik(
-#     url="http://hladovydenik.blogspot.com/2014/12/o-mne.html",
-#     title_div='h3',
-#     title_class='class',
-#     title_classtext='post-title entry-title',
-#     content_div='div',
-#     content_class='class',
-#     content_classtext='post-body entry-content',
-#     filename='blog_intro_test.html'
+#     url="http://hladovydenik.blogspot.com/2014/12/uvodem.html",
+#     title_div="h3",
+#     title_class="class",
+#     title_classtext="post-title entry-title",
+#     content_div="div",
+#     content_class="class",
+#     content_classtext="post-body entry-content",
+#     filename="hladovy_denik_uvodem.html",
 # )

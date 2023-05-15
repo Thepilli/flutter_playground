@@ -19,7 +19,7 @@ class _PlanetHeroState extends State<PlanetHero> {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            Background(),
+            const Background(),
             SingleChildScrollView(
               child: Column(
                 children: [
@@ -31,20 +31,21 @@ class _PlanetHeroState extends State<PlanetHero> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 25.0, left: 0.0, right: 0.0),
+                    margin:
+                        const EdgeInsets.only(top: 25.0, left: 0.0, right: 0.0),
                     height: 255,
-                    padding: EdgeInsets.all(25.0),
+                    padding: const EdgeInsets.all(25.0),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.0),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withOpacity(.1),
-                            offset: Offset(0, 10),
+                            offset: const Offset(0, 10),
                             blurRadius: 0,
                             spreadRadius: 0,
                           )
                         ],
-                        gradient: RadialGradient(
+                        gradient: const RadialGradient(
                           colors: [Color(0xff0E5C9E), Color(0xff031965)],
                           focal: Alignment.topCenter,
                           radius: .85,
@@ -55,7 +56,7 @@ class _PlanetHeroState extends State<PlanetHero> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               "Neptune Travel",
                               style: TextStyle(
                                   fontFamily: "BigBottom",
@@ -67,12 +68,12 @@ class _PlanetHeroState extends State<PlanetHero> {
                               height: 30,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100.0),
-                                gradient: LinearGradient(
+                                gradient: const LinearGradient(
                                     colors: [Colors.yellow, Colors.orange],
                                     begin: Alignment.topCenter,
                                     end: Alignment.bottomCenter),
                               ),
-                              child: Center(
+                              child: const Center(
                                   child: Text(
                                 "More",
                                 style: TextStyle(color: Colors.white),
@@ -80,14 +81,14 @@ class _PlanetHeroState extends State<PlanetHero> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text(
                           """Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia, molestiae quas vel sint commodi repudi conseqr voluptatum laborum numquam blanditiis harum quisquam eius sed odit!""",
                           style: TextStyle(
                               color: Colors.white.withOpacity(.75),
                               fontSize: 14),
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         Expanded(
                           child: Container(
                             width: double.infinity,
@@ -100,20 +101,20 @@ class _PlanetHeroState extends State<PlanetHero> {
                               padding: const EdgeInsets.all(8.0),
                               child: Row(
                                 children: [
-                                  CircleAvatar(
+                                  const CircleAvatar(
+                                    backgroundColor: Color(0xff031965),
+                                    radius: 25,
                                     child: Icon(
                                       Icons.directions,
                                       color: Colors.white,
                                     ),
-                                    backgroundColor: Color(0xff031965),
-                                    radius: 25,
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    children: [
+                                    children: const [
                                       Text("Neptune - Earth"),
                                       Text(
                                         "2.76 billion mi",
@@ -174,13 +175,13 @@ class PlanetCardWidget extends StatefulWidget {
 class _PlanetCardWidgetState extends State<PlanetCardWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 515,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
           Container(
-            margin: EdgeInsets.only(top: 70.0, left: 0.0, right: 0.0),
+            margin: const EdgeInsets.only(top: 70.0, left: 0.0, right: 0.0),
             width: 400,
             height: 470,
             decoration: BoxDecoration(
@@ -188,12 +189,12 @@ class _PlanetCardWidgetState extends State<PlanetCardWidget> {
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(.1),
-                    offset: Offset(0, 10),
+                    offset: const Offset(0, 10),
                     blurRadius: 0,
                     spreadRadius: 0,
                   )
                 ],
-                gradient: RadialGradient(
+                gradient: const RadialGradient(
                   colors: [Color(0xff0E5C9E), Color(0xff031965)],
                   focal: Alignment.topCenter,
                   radius: .85,
@@ -218,7 +219,7 @@ class _PlanetCardWidgetState extends State<PlanetCardWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.keyboard_arrow_left,
                         color: Colors.white,
                       ),
@@ -226,7 +227,7 @@ class _PlanetCardWidgetState extends State<PlanetCardWidget> {
                         Navigator.pop(context);
                       },
                     ),
-                    Text("Neptune",
+                    const Text("Neptune",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 22,
@@ -234,7 +235,7 @@ class _PlanetCardWidgetState extends State<PlanetCardWidget> {
                             fontFamily: "BigBottom",
                             fontWeight: FontWeight.bold)),
                     IconButton(
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.notification_add_sharp,
                         color: Colors.white,
                       ),
@@ -242,7 +243,7 @@ class _PlanetCardWidgetState extends State<PlanetCardWidget> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Container(
@@ -252,7 +253,7 @@ class _PlanetCardWidgetState extends State<PlanetCardWidget> {
                     boxShadow: [
                       BoxShadow(
                         color: Colors.blue.withOpacity(.3),
-                        offset: Offset(0, 5),
+                        offset: const Offset(0, 5),
                         blurRadius: 25,
                         spreadRadius: 0,
                       )
@@ -266,14 +267,14 @@ class _PlanetCardWidgetState extends State<PlanetCardWidget> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text(
+                const Text(
                   "Solar systems",
                   style: TextStyle(color: Colors.white, fontSize: 16),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 Row(

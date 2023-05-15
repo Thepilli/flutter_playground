@@ -13,12 +13,12 @@ class SemanticsWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Semantics(
-            child: FlutterLogo(
+            label: 'Tap to increment',
+            child: const FlutterLogo(
               size: 200,
             ),
-            label: 'Tap to increment',
           ),
-          FlutterLogo(
+          const FlutterLogo(
             size: 200,
           ),
         ],

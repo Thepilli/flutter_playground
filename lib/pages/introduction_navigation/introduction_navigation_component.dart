@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 class IntroductionNavigationComponent extends StatefulWidget {
+  const IntroductionNavigationComponent({super.key});
+
   @override
   State<IntroductionNavigationComponent> createState() =>
       _IntroductionNavigationComponent();

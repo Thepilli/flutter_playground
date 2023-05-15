@@ -46,6 +46,7 @@ class _GoogleNavbarWidgetStarter extends State<GoogleNavbarWidgetStarter> {
   }
 }
 
+// ignore: must_be_immutable
 class GoogleNavbarWidget extends StatelessWidget {
   void Function(int)? onTabChange;
 

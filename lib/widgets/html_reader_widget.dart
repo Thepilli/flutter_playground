@@ -21,7 +21,7 @@ class HtmlReaderWidget extends StatelessWidget {
             builder: (context, snapshot) {
               return snapshot.hasData
                   ? Text(snapshot.data.toString())
-                  : Placeholder();
+                  : const Placeholder();
             },
           ),
         ),

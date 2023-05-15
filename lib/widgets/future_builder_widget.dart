@@ -25,7 +25,7 @@ class _FutureBuilderWidgetState extends State<FutureBuilderWidget> {
           future: getFuture(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator.adaptive();
+              return const CircularProgressIndicator.adaptive();
             } else if (snapshot.hasError) {
               return Text(snapshot.error.toString());
             } else {

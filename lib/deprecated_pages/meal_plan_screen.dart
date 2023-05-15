@@ -1,19 +1,20 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: unused_element, unused_field
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 void main() {
-  runApp(const grid());
+  runApp(const Grid());
 }
 
-class grid extends StatefulWidget {
-  const grid({Key? key}) : super(key: key);
+class Grid extends StatefulWidget {
+  const Grid({Key? key}) : super(key: key);
 
   @override
-  State<grid> createState() => _gridState();
+  State<Grid> createState() => _GridState();
 }
 
-class _gridState extends State<grid> {
+class _GridState extends State<Grid> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {

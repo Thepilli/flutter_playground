@@ -5,7 +5,7 @@ import '../utils/mytextstyles.dart';
 class HtmlReaderCustomWidget extends StatelessWidget {
   final String htmlFilePath;
 
-  HtmlReaderCustomWidget({required this.htmlFilePath});
+  const HtmlReaderCustomWidget({super.key, required this.htmlFilePath});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class HtmlReaderCustomWidget extends StatelessWidget {
               ),
             );
           } else {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           }
         },
       ),

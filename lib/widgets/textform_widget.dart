@@ -34,7 +34,7 @@ class _TextFormWidgetState extends State<TextFormWidget> {
                       titles[index] = value!;
                     },
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Card(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
