@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_flutter_app/widgets/carousel_slider_widget.dart';
+import 'package:my_flutter_app/widgets/animation/animated_physics_bounce.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,9 +20,15 @@ class _MyAppState extends State<MyApp> {
         showSemanticsDebugger: false,
         title: title,
         theme: ThemeData(
-          primarySwatch: Colors.amber,
+          primarySwatch: Colors.pink,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              foregroundColor: Colors.black,
+              backgroundColor: Colors.pink, // foreground (text) color
+            ),
+          ),
         ),
-        home: const CarouselDemo()
+        home: const AnimatedPhysicsBounce()
         // home: const GaugeArrowAnimation(
         //   value: 0,
         // ),

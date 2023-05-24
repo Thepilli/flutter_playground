@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import '../models/meal.dart';
 
 final List<String> imgList = [
   'assets/polevky/Borsc.jpg',
@@ -24,12 +30,20 @@ final List<String> imgList = [
   'assets/polevky/Zelna_s_uzeninou.jpg',
 ];
 
-void main() => runApp(const CarouselDemo());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final json = await rootBundle.loadString('assets/meal_images_map.json');
+
+  final List<Meal> meals =
+      List.from(jsonDecode(json)).map((json) => Meal.fromJson(json)).toList();
+
+  runApp(CarouselDemo(meals: meals));
+}
 
 final themeMode = ValueNotifier(2);
 
 class CarouselDemo extends StatelessWidget {
-  const CarouselDemo({super.key});
+  const CarouselDemo({super.key, required List<Meal> meals});
 
   @override
   Widget build(BuildContext context) {
@@ -42,22 +56,24 @@ class CarouselDemo extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routes: {
             '/': (ctx) => const CarouselDemoHome(),
-            '/basic': (ctx) => const BasicDemo(),
-            '/nocenter': (ctx) => const NoCenterDemo(),
-            '/image': (ctx) => const ImageSliderDemo(),
-            '/complicated': (ctx) => const ComplicatedImageDemo(),
-            '/enlarge': (ctx) => const EnlargeStrategyDemo(),
-            '/manual': (ctx) => const ManuallyControlledSlider(),
-            '/noloop': (ctx) => const NoonLoopingDemo(),
-            '/vertical': (ctx) => const VerticalSliderDemo(),
-            '/fullscreen': (ctx) => const FullscreenSliderDemo(),
-            '/ondemand': (ctx) => const OnDemandCarouselDemo(),
+            // '/basic': (ctx) => const BasicDemo(),
+            // '/nocenter': (ctx) => const NoCenterDemo(),
+            // '/image': (ctx) => const ImageSliderDemo(),
+            // '/complicated': (ctx) => const ComplicatedImageDemo(),
+            // '/enlarge': (ctx) => const EnlargeStrategyDemo(),
+            // '/manual': (ctx) => const ManuallyControlledSlider(),
+            // '/noloop': (ctx) => const NoonLoopingDemo(),
+            '/vertical': (ctx) => const VerticalSliderDemo(
+                  meals: [],
+                ),
+            // '/fullscreen': (ctx) => const FullscreenSliderDemo(),
+            // '/ondemand': (ctx) => const OnDemandCarouselDemo(),
             '/indicator': (ctx) => const CarouselWithIndicatorDemo(),
-            '/prefetch': (ctx) => const PrefetchImageDemo(),
+            // '/prefetch': (ctx) => const PrefetchImageDemo(),
             '/reason': (ctx) => const CarouselChangeReasonDemo(),
             '/position': (ctx) => const KeepPageviewPositionDemo(),
-            '/multiple': (ctx) => const MultipleItemDemo(),
-            '/zoom': (ctx) => const EnlargeStrategyZoomDemo(),
+            // '/multiple': (ctx) => const MultipleItemDemo(),
+            // '/zoom': (ctx) => const EnlargeStrategyZoomDemo(),
           },
         );
       },
@@ -100,22 +116,22 @@ class CarouselDemoHome extends StatelessWidget {
       ),
       body: ListView(
         children: const <Widget>[
-          DemoItem('Basic demo', '/basic'),
-          DemoItem('No center mode demo', '/nocenter'),
-          DemoItem('Image carousel slider', '/image'),
-          DemoItem('More complicated image slider', '/complicated'),
-          DemoItem('Enlarge strategy demo slider', '/enlarge'),
-          DemoItem('Manually controlled slider', '/manual'),
-          DemoItem('Noon-looping carousel slider', '/noloop'),
+          // DemoItem('Basic demo', '/basic'),
+          // DemoItem('No center mode demo', '/nocenter'),
+          // DemoItem('Image carousel slider', '/image'),
+          // DemoItem('More complicated image slider', '/complicated'),
+          // DemoItem('Enlarge strategy demo slider', '/enlarge'),
+          // DemoItem('Manually controlled slider', '/manual'),
+          // DemoItem('Noon-looping carousel slider', '/noloop'),
           DemoItem('Vertical carousel slider', '/vertical'),
-          DemoItem('Fullscreen carousel slider', '/fullscreen'),
-          DemoItem('Carousel with indicator controller demo', '/indicator'),
-          DemoItem('On-demand carousel slider', '/ondemand'),
-          DemoItem('Image carousel slider with prefetch demo', '/prefetch'),
-          DemoItem('Carousel change reason demo', '/reason'),
-          DemoItem('Keep pageview position demo', '/position'),
-          DemoItem('Multiple item in one screen demo', '/multiple'),
-          DemoItem('Enlarge strategy: zoom demo', '/zoom'),
+          // DemoItem('Fullscreen carousel slider', '/fullscreen'),
+          // DemoItem('Carousel with indicator controller demo', '/indicator'),
+          // DemoItem('On-demand carousel slider', '/ondemand'),
+          // DemoItem('Image carousel slider with prefetch demo', '/prefetch'),
+          // DemoItem('Carousel change reason demo', '/reason'),
+          // DemoItem('Keep pageview position demo', '/position'),
+          // DemoItem('Multiple item in one screen demo', '/multiple'),
+          // DemoItem('Enlarge strategy: zoom demo', '/zoom'),
         ],
       ),
     );
@@ -360,101 +376,255 @@ class NoonLoopingDemo extends StatelessWidget {
 }
 
 class VerticalSliderDemo extends StatelessWidget {
-  const VerticalSliderDemo({super.key});
+  final List<Meal> meals;
+
+  const VerticalSliderDemo({Key? key, required this.meals}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Vertical sliding carousel demo')),
-      body: Container(
-          child: CarouselSlider(
-        options: CarouselOptions(
-          //  height: ,
-          aspectRatio: 1.5,
-          viewportFraction: 0.6,
-          initialPage: 0,
-          enableInfiniteScroll: true,
-          animateToClosest: true,
-          reverse: false,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 1),
-          autoPlayAnimationDuration: const Duration(milliseconds: 800),
-          autoPlayCurve: Curves.fastOutSlowIn,
-          enlargeCenterPage: true,
-          // onPageChanged:(index, reason) {},
-          // onScrolled:(index, reason) {},
-          // scrollPhysics:(index, reason) {},
-          pageSnapping: true,
-          scrollDirection: Axis.vertical,
-          pauseAutoPlayOnTouch: true,
-          pauseAutoPlayOnManualNavigate: true,
-          pauseAutoPlayInFiniteScroll: false,
+      // appBar: AppBar(title: const Text('Vertical sliding carousel demo')),
+      backgroundColor: Colors.pink,
+      body: FutureBuilder(
+        future: DefaultAssetBundle.of(context)
+            .loadString('assets/meal_images_map.json'),
+        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+          if (snapshot.hasData) {
+            final jsonContent = snapshot.data!;
+            final List<Meal> meals = List.from(jsonDecode(jsonContent))
+                .map((json) => Meal.fromJson(json))
+                .where((meal) => meal.category == 'sladka_jidla')
+                .toList();
 
-          enlargeStrategy: CenterPageEnlargeStrategy.scale,
-          enlargeFactor: 0.4,
-          disableCenter: false,
-          padEnds: true,
-          clipBehavior: Clip.hardEdge,
-        ),
-        items: imgList
-            .map((item) => Container(
-                  child: Container(
-                    margin: const EdgeInsets.all(5.0),
-                    child: ClipRRect(
-                        //the main card shape
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50.0)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Stack(
-                              children: <Widget>[
-                                Image.asset(item,
-                                    fit: BoxFit.fill, height: 200),
-                                // gradiator
-                                Positioned(
-                                  bottom: 0.0,
-                                  left: 0.0,
-                                  right: 0.0,
-                                  child: Container(
-                                    decoration: const BoxDecoration(
-                                      gradient: LinearGradient(
-                                        colors: [
-                                          Color.fromARGB(200, 0, 0, 0),
-                                          Color.fromARGB(0, 0, 0, 0)
-                                        ],
-                                        begin: Alignment.bottomCenter,
-                                        end: Alignment.topCenter,
-                                      ),
-                                    ),
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10.0, horizontal: 10.0),
-                                    child: Text(
-                                      'No. ${imgList.indexOf(item)}',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 20.0,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
+            return SafeArea(
+              child: Column(
+                children: [
+                  Container(
+                    color: Colors.blue,
+                    child: CarouselSlider(
+                      options: CarouselOptions(
+                        // height: 300,
+                        aspectRatio: 2,
+                        viewportFraction: 0.9,
+                        initialPage: Random().nextInt(meals.length),
+                        enableInfiniteScroll: true,
+                        animateToClosest: true,
+                        reverse: false,
+                        // autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 1),
+                        autoPlayAnimationDuration:
+                            const Duration(milliseconds: 800),
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enlargeCenterPage: true,
+                        // onPageChanged:(index, reason) {},
+                        // onScrolled:(index, reason) {},
+                        // scrollPhysics:(index, reason) {},
+                        pageSnapping: false,
+                        scrollDirection: Axis.vertical,
+                        pauseAutoPlayOnTouch: true,
+                        pauseAutoPlayOnManualNavigate: true,
+                        pauseAutoPlayInFiniteScroll: false,
+
+                        enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                        enlargeFactor: 0.5,
+                        disableCenter: false,
+                        padEnds: true,
+                        clipBehavior: Clip.hardEdge,
+                      ),
+                      items: meals
+                          .map((meal) => Container(
+                                child: Container(
+                                  margin: const EdgeInsets.all(10.0),
+                                  child: ClipRRect(
+                                      //the main card shape
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20.0)),
+                                      child: Container(
+                                        color: Colors.pink[200],
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Stack(
+                                              children: <Widget>[
+                                                Image.asset(
+                                                  'assets/${meal.category}/${meal.imgsource}',
+                                                  fit: BoxFit.fill,
+                                                  height: 200,
+                                                ),
+
+                                                // gradiator
+                                                // Positioned(
+                                                //   bottom: 0.0,
+                                                //   left: 0.0,
+                                                //   right: 0.0,
+                                                //   child: Container(
+                                                //     decoration: const BoxDecoration(
+                                                //       gradient: LinearGradient(
+                                                //         colors: [
+                                                //           Color.fromARGB(200, 0, 0, 0),
+                                                //           Color.fromARGB(0, 0, 0, 0)
+                                                //         ],
+                                                //         begin: Alignment.bottomCenter,
+                                                //         end: Alignment.topCenter,
+                                                //       ),
+                                                //     ),
+                                                //     padding: const EdgeInsets.symmetric(
+                                                //         vertical: 10.0,
+                                                //         horizontal: 10.0),
+                                                //     child: Text(
+                                                //       meal.titleDia,
+                                                //       style: const TextStyle(
+                                                //         color: Colors.white,
+                                                //         fontSize: 20.0,
+                                                //         fontWeight: FontWeight.bold,
+                                                //       ),
+                                                //     ),
+                                                //   ),
+                                                // ),
+                                              ],
+                                            ),
+                                            Flexible(
+                                              child: SizedBox(
+                                                width: 300,
+                                                child: Text(
+                                                  meal.titleDia,
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                  maxLines: 3,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
                                 ),
-                              ],
-                            ),
-                            Text(
-                              'No. ${imgList.indexOf(item)}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        )),
+                              ))
+                          .toList(),
+                    ),
                   ),
-                ))
-            .toList(),
-      )),
+                  Container(
+                    color: Colors.blue,
+                    child: CarouselSlider(
+                      options: CarouselOptions(
+                        // height: 300,
+                        aspectRatio: 2,
+                        viewportFraction: 0.9,
+                        initialPage: Random().nextInt(meals.length),
+                        enableInfiniteScroll: true,
+                        animateToClosest: true,
+                        reverse: false,
+                        // autoPlay: true,
+                        autoPlayInterval: const Duration(seconds: 1),
+                        autoPlayAnimationDuration:
+                            const Duration(milliseconds: 800),
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        enlargeCenterPage: true,
+                        // onPageChanged:(index, reason) {},
+                        // onScrolled:(index, reason) {},
+                        // scrollPhysics:(index, reason) {},
+                        pageSnapping: false,
+                        scrollDirection: Axis.vertical,
+                        pauseAutoPlayOnTouch: true,
+                        pauseAutoPlayOnManualNavigate: true,
+                        pauseAutoPlayInFiniteScroll: false,
+
+                        enlargeStrategy: CenterPageEnlargeStrategy.zoom,
+                        enlargeFactor: 0.5,
+                        disableCenter: false,
+                        padEnds: true,
+                        clipBehavior: Clip.hardEdge,
+                      ),
+                      items: meals
+                          .map((meal) => Container(
+                                child: Container(
+                                  margin: const EdgeInsets.all(10.0),
+                                  child: ClipRRect(
+                                      //the main card shape
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20.0)),
+                                      child: Container(
+                                        color: Colors.pink[200],
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Stack(
+                                              children: <Widget>[
+                                                Image.asset(
+                                                  'assets/${meal.category}/${meal.imgsource}',
+                                                  fit: BoxFit.fill,
+                                                  height: 200,
+                                                ),
+
+                                                // gradiator
+                                                // Positioned(
+                                                //   bottom: 0.0,
+                                                //   left: 0.0,
+                                                //   right: 0.0,
+                                                //   child: Container(
+                                                //     decoration: const BoxDecoration(
+                                                //       gradient: LinearGradient(
+                                                //         colors: [
+                                                //           Color.fromARGB(200, 0, 0, 0),
+                                                //           Color.fromARGB(0, 0, 0, 0)
+                                                //         ],
+                                                //         begin: Alignment.bottomCenter,
+                                                //         end: Alignment.topCenter,
+                                                //       ),
+                                                //     ),
+                                                //     padding: const EdgeInsets.symmetric(
+                                                //         vertical: 10.0,
+                                                //         horizontal: 10.0),
+                                                //     child: Text(
+                                                //       meal.titleDia,
+                                                //       style: const TextStyle(
+                                                //         color: Colors.white,
+                                                //         fontSize: 20.0,
+                                                //         fontWeight: FontWeight.bold,
+                                                //       ),
+                                                //     ),
+                                                //   ),
+                                                // ),
+                                              ],
+                                            ),
+                                            Flexible(
+                                              child: SizedBox(
+                                                width: 300,
+                                                child: Text(
+                                                  meal.titleDia,
+                                                  textAlign: TextAlign.center,
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                  maxLines: 3,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                ),
+                              ))
+                          .toList(),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return const Text('Error loading JSON file');
+          } else {
+            return const Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
 }
